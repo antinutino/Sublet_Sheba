@@ -1,4 +1,4 @@
-import { Client, Databases, ID } from 'appwrite';
+import { Client, Databases, ID, Query } from 'appwrite';
 import conf from '../conf/conf.js';
 
 export class Service {
@@ -14,7 +14,7 @@ export class Service {
         // this.bucket = new Storage(this.client);
     }
 
-    async setUserDetail({ name, email, phone, role, address, nid }) {
+    async setUserDetail({ name, email, phone, role, address, nid, photo }) {
         try {
             return await this.databases.createDocument(
                 conf.subletshebaDatabaseId,
@@ -25,11 +25,35 @@ export class Service {
                     phone,
                     role,
                     address,
-                    nid
+                    nid,
+                    photo
                 }
             );
         } catch (error) {
             throw error;
+        }
+    }
+
+    async getUserDetails(email) {
+        try {
+          // Make a request to fetch the document by email
+          const response = await this.databases.listDocuments(
+            conf.subletshebaDatabaseId,
+            conf.subletshebaUserDetailId,
+            [Query.equal('email', email)]
+          );
+          
+          // Handle the response
+          console.log('Fetched Document:', response);
+          
+          if (response.total > 0) {
+            return response.documents[0]; // Return the first matching document
+          } else {
+            throw new Error('No document found');
+          }
+        } catch (error) {
+          console.error('Error fetching document:', error);
+          throw error; // Handle or rethrow the error as needed
         }
     }
 
