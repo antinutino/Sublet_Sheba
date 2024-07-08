@@ -1,0 +1,95 @@
+{
+    "posts": [
+      {
+        "user_id": "1",
+        "profile_image": "https://example.com/profiles/user1.jpg",
+        "name": "Alice Smith",
+        "post_title": "Spacious 2 Bedroom Apartment",
+        "property_image": "https://example.com/properties/property1.jpg",
+        "cost_per_month": "1200",
+        "location": "New York, NY",
+        "button": "rent now",
+        "comments": [
+          "Great location near the park!",
+          "Very spacious and well-maintained.",
+          "Loved the view from the balcony."
+        ]
+      },
+      {
+        "user_id": "2",
+        "profile_image": "https://example.com/profiles/user2.jpg",
+        "name": "Bob Johnson",
+        "post_title": "Modern Studio in Downtown",
+        "property_image": "https://example.com/properties/property2.jpg",
+        "cost_per_month": "1500",
+        "location": "San Francisco, CA",
+        "button": "rent now",
+        "comments": [
+          "Perfect for young professionals!",
+          "Close to public transport and amenities.",
+          "The interior design is very modern."
+        ]
+      },
+      {
+        "user_id": "3",
+        "profile_image": "https://example.com/profiles/user3.jpg",
+        "name": "Catherine Lee",
+        "post_title": "Cozy 1 Bedroom Condo",
+        "property_image": "https://example.com/properties/property3.jpg",
+        "cost_per_month": "900",
+        "location": "Austin, TX",
+        "button": "rent now",
+        "comments": [
+          "Quiet neighborhood and close to shopping.",
+          "Ideal for a single person or couple.",
+          "Affordable and comfortable living."
+        ]
+      },
+      {
+        "user_id": "4",
+        "profile_image": "https://example.com/profiles/user4.jpg",
+        "name": "David Kim",
+        "post_title": "Luxurious 3 Bedroom House",
+        "property_image": "https://example.com/properties/property4.jpg",
+        "cost_per_month": "2500",
+        "location": "Seattle, WA",
+        "button": "rent now",
+        "comments": [
+          "Beautiful house with a great view!",
+          "Spacious backyard and modern amenities.",
+          "Perfect for a family."
+        ]
+      },
+      {
+        "user_id": "5",
+        "profile_image": "https://example.com/profiles/user5.jpg",
+        "name": "Eva Martinez",
+        "post_title": "Charming 2 Bedroom Cottage",
+        "property_image": "https://example.com/properties/property5.jpg",
+        "cost_per_month": "1100",
+        "location": "Portland, OR",
+        "button": "rent now",
+        "comments": [
+          "Cozy and charming, perfect for a small family.",
+          "Lovely garden and friendly neighborhood.",
+          "Great value for the price."
+        ]
+      },
+      {
+        "user_id": "6",
+        "profile_image": "https://example.com/profiles/user6.jpg",
+        "name": "Frank Wilson",
+        "post_title": "Spacious 4 Bedroom Villa",
+        "property_image": "https://example.com/properties/property6.jpg",
+        "cost_per_month": "3000",
+        "location": "Miami, FL",
+        "button": "rent now",
+        "comments": [
+          "Luxury living with a private pool!",
+          "Huge rooms and state-of-the-art facilities.",
+          "Ideal for entertaining guests."
+        ]
+      }
+    ]
+  }
+  

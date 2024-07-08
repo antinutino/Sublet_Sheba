@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "sublet-sheba-ss",
+    "staging": "sublet-sheba-ss"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
