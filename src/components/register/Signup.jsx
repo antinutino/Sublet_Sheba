@@ -27,6 +27,8 @@ function Signup() {
       const result = await authService.createAccount(formData);
       console.log(result);
          navigate('/userdetail')
+         window.location.reload();
+
     } catch (error) {
       console.log(error);
       setError(error.message);

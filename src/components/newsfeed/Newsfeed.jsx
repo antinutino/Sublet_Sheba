@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiEdit, FiInbox, FiBell } from 'react-icons/fi'; // Importing icons from react-icons
+import { Link } from 'react-router-dom';
 
 function Newsfeed() {
   return (
@@ -9,9 +10,8 @@ function Newsfeed() {
         {/* Buttons */}
         <div className="flex w-full md:w-auto space-x-4">
           {/* Post Button */}
-          <button className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full md:w-auto">
-            <FiEdit className="h-5 w-5 mx-auto" />
-          </button>
+          <Link to='/post'><button className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full md:w-auto">
+          <FiEdit className="h-5 w-5 mx-auto" /></button></Link>
           {/* Inbox Button */}
           <button className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full md:w-auto">
             <FiInbox className="h-5 w-5 mx-auto" />

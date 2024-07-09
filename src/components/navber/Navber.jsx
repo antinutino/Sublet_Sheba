@@ -24,24 +24,6 @@ export default function Navbar() {
   const navbtnclick=()=>{
     setNavOpen(!navOpen);
   }
-  // const handleprofile=()=>{
-  //   const email = { email: user.email };
-  //     console.log(email);
-  //     fetch('https://finding-error-jq6eun21b-maharaj-hossains-projects.vercel.app/userEmail', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type':'application/json'
-  //       },
-  //       body: JSON.stringify(email)
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         console.log('email is', data);
-  //       })
-  //       .catch(error => {
-  //         console.error('Error:', error);
-  //       });
-  // }
 
   return (
     <div className="flex justify-between m-2 relative">

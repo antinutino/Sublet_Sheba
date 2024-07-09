@@ -12,20 +12,21 @@ export default function Profile() {
   
   const [userData, setUserData] = useState(null); // State to hold user data
   
+  
   useEffect(() => {
-    async function fetchUserData() {
+    const fetchUserData = async () => {
       try {
-        const userDetail = await service.getUserDetails(user.email); // Fetch user details by email
-        setUserData(userDetail); // Set user data state
+        if (user) {
+          const userDetail = await service.getUserDetails(user.email); // Fetch user details by email
+          setUserData(userDetail);
+        }
       } catch (error) {
         console.error('Error fetching user data:', error);
         // Handle error fetching user data
       }
-    }
+    };
 
-    if (user) {
-      fetchUserData(); // Fetch user data on component mount if user is available
-    }
+    fetchUserData();
   }, [user]);
 
   const handleLogout = async () => {

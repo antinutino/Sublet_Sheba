@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../provider/Authprovider.jsx'; // Adjust the path as needed
 import service from '../../appwrite/data_config.js'; // Adjust the path as needed
+import { useNavigate } from 'react-router-dom';
 
 function Userdetail() {
   const { user } = useContext(AuthContext); // Uncomment if you plan to use user context
   // console.log(user.name); // Uncomment if you plan to log user name
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name:'',
     email:'',
@@ -33,6 +34,7 @@ function Userdetail() {
     try {
       await service.setUserDetail(formData);
       console.log('User details saved successfully!');
+      navigate('/');
       // Reset form after submission
       setFormData({
         name:'',
