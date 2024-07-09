@@ -3,7 +3,7 @@ import { AuthContext } from "../provider/Authprovider";
 import { useNavigate } from "react-router-dom";
 import { Service } from "../../appwrite/data_config"; // Import your Service class from services/service.js
 import { FiEdit, FiInbox } from 'react-icons/fi'; // Import edit and inbox icons
-
+import Userposts from '../showposts/Userposts'
 const service = new Service(); // Instantiate your service
 
 export default function Profile() {
@@ -28,6 +28,7 @@ export default function Profile() {
 
     fetchUserData();
   }, [user]);
+  console.log(user.email);
 
   const handleLogout = async () => {
     try {
@@ -38,66 +39,62 @@ export default function Profile() {
       // Handle logout error
     }
   };
-  // console.log(userData.photo);
+
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 w-full lg:w-2/3 bg-slate-200 rounded-lg">
       {userData ? (
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col items-center">
           {/* Profile Picture */}
           <img
             src={userData.photo} // Assuming user data includes a photo field
             alt="Profile"
-            className="rounded-full h-24 w-24 object-cover"
+            className="rounded-full h-24 w-24 lg:h-48 lg:w-48 object-cover mb-4"
           />
-          <div className="ml-4">
-            {/* User Name */}
-            <h2 className="text-2xl font-bold">{userData.name}</h2>
-            {/* Address */}
+          {/* User Name */}
+          <h2 className="text-2xl font-bold">{user.name}</h2>
+          {/* Address, Email, Phone */}
+          <div className="flex flex-col items-center mt-2">
             <p>{userData.address}</p>
-            {/* Email */}
             <p>{userData.email}</p>
-            {/* Edit and Inbox Buttons */}
-            <div className="mt-4 flex space-x-4">
-              <button
-                onClick={() => { /* Handle edit functionality */ }}
-                className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              >
-                <FiEdit className="h-5 w-5" />
-                <span className="ml-2">Edit</span>
-              </button>
-              <button
-                onClick={() => { /* Handle inbox functionality */ }}
-                className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              >
-                <FiInbox className="h-5 w-5" />
-                <span className="ml-2">Inbox</span>
-              </button>
-            </div>
+          </div>
+          {/* Edit and Inbox Buttons */}
+          <div className="mt-4 flex space-x-4">
+            <button
+              onClick={() => { /* Handle edit functionality */ }}
+              className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            >
+              <FiEdit className="h-5 w-5" />
+              <span className="ml-2">Post</span>
+            </button>
+            <button
+              onClick={() => { /* Handle inbox functionality */ }}
+              className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            >
+              <FiInbox className="h-5 w-5" />
+              <span className="ml-2">Inbox</span>
+            </button>
           </div>
         </div>
       ) : (
         <div>Loading...</div>
       )}
       {/* User Posts Section (Replace with actual user posts logic) */}
-      <div className="mt-8">
-        <h3 className="text-xl font-bold">User Posts</h3>
+      <div className="mt-8 ">
         <div className="border-t border-gray-200 mt-4 pt-4">
-          {/* Placeholder for user posts */}
-          <p>User posts will go here...</p>
+          <Userposts></Userposts>
         </div>
+        <button
+            onClick={handleLogout}
+            className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 self-end"
+          >
+            Logout
+          </button>
       </div>
       {/* Footer */}
       <footer className="mt-8 border-t border-gray-200 pt-6 text-center text-gray-500">
         {/* Footer content */}
         <p>&copy; 2024 Your Company. All rights reserved.</p>
       </footer>
-      {/* Logout Button */}
-      <button
-        onClick={handleLogout}
-        className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-      >
-        Logout
-      </button>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiEdit, FiInbox, FiBell } from 'react-icons/fi'; // Importing icons from react-icons
 import { Link } from 'react-router-dom';
+import Userposts from '../showposts/Userposts';
 
 function Newsfeed() {
   return (
@@ -26,8 +27,8 @@ function Newsfeed() {
       {/* Main content */}
       <div className="flex flex-grow bg-gray-100">
         {/* Newsfeed content */}
-        <div className="p-4 flex-grow">
-          <p className="text-gray-800">Newsfeed content goes here...</p>
+        <div className="p-4 flex-grow mx-4">
+         <Userposts></Userposts>
         </div>
 
         {/* Inbox section (visible on medium or larger screens) */}

@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { AuthContext } from '../provider/Authprovider';
+import service from '../../appwrite/data_config'; // Make sure this path is correct
+import { useNavigate } from 'react-router-dom';
 
 function Post() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     district: '',
     subdistrict: '',
     rent: '',
     title: '',
-    details: ''
+    details: '',
+    photo1: '',
+    photo2: '',
+    email: '' // Initialize email as empty
   });
+
+  useEffect(() => {
+    if (user && user.email) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        email: user.email // Set the email field when user changes
+      }));
+    }
+  }, [user]);
 
   function handleChange(e) {
     const value = e.target.value;
@@ -20,25 +38,31 @@ function Post() {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(formData); // For demonstration, log form data to console
+    try {
+      await service.setpost(formData);
+      console.log('post saved successfully!');
+      navigate('/');
 
-    // try {
-    //   const result = await authService.createAccount(formData);
-    //   console.log(result);
-    // } catch (error) {
-    //   console.log(error);
-    //   setError(error.message);
-    // }
-    setFormData({
-      district: '',
-      subdistrict: '',
-      rent: '',
-      title: '',
-      details: ''
-    });
+      // Clear the form after submission
+      setFormData({
+        district: '',
+        subdistrict: '',
+        rent: '',
+        title: '',
+        details: '',
+        photo1: '',
+        photo2: '',
+        email: '' 
+      });
+    } catch (error) {
+      setError(error.message);
+    }
   }
 
   return (
     <div className="mx-4 lg:max-w-md lg:mx-auto">
+      <h1 className='mx-auto text-cyan-500 text-center text-3xl mt-4 mb-4 font-bold bg-slate-100 rounded-lg p-2'>Post Here</h1>
+      {error && <div className="text-red-500 text-center mb-4">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-4">
           <div className="grid grid-cols-2 gap-4">
@@ -104,6 +128,32 @@ function Post() {
               onChange={handleChange}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm h-32"
               placeholder="Enter details"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="photo1" className="block text-sm font-medium text-gray-700">Photo1</label>
+            <input
+              type="text"
+              id="photo1"
+              name="photo1"
+              value={formData.photo1}
+              onChange={handleChange}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter photo1 URL"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="photo2" className="block text-sm font-medium text-gray-700">Photo2</label>
+            <input
+              type="text"
+              id="photo2"
+              name="photo2"
+              value={formData.photo2}
+              onChange={handleChange}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter photo2 URL"
               required
             />
           </div>

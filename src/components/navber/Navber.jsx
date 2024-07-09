@@ -56,15 +56,6 @@ export default function Navbar() {
             <button className="hover:bg-slate-300 hover:rounded-lg p-1 mb-1 text-md font-semibold">Login</button>
           </Link>
           }
-         <div>
-          {
-            user&& <button
-            onClick={handlelogout}
-            className="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Log Out
-          </button>
-          }
-         </div>
         </div>
       </div>
     </div>
