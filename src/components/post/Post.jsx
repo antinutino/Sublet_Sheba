@@ -22,7 +22,9 @@ function Post() {
     if (user && user.email) {
       setFormData((prevFormData) => ({
         ...prevFormData,
-        email: user.email // Set the email field when user changes
+        email: user.email,
+        name:user.name
+          // Set the email field when user changes
       }));
     }
   }, [user]);
@@ -52,7 +54,8 @@ function Post() {
         details: '',
         photo1: '',
         photo2: '',
-        email: '' 
+        email: '',
+        name:'' 
       });
     } catch (error) {
       setError(error.message);

@@ -34,7 +34,7 @@ export class Service {
         }
     }
 
-    async setpost({ district,subdistrict,rent,title,details,photo1,photo2,email }) {
+    async setpost({ district,subdistrict,rent,title,details,photo1,photo2,email,name }) {
         try {
             return await this.databases.createDocument(
                 conf.subletshebaDatabaseId,
@@ -47,7 +47,29 @@ export class Service {
                     details,
                     photo1,
                     photo2,
-                    email
+                    email,
+                    name
+                }
+            );
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async setInboxData({title,details,username,useremail,reciveremail,postid,message}) {
+
+        try {
+            return await this.databases.createDocument(
+                conf.subletshebaDatabaseId,
+                conf.subletshebaInboxCollectionId,
+                ID.unique(), {
+                    title,
+                    details,
+                    username,
+                    useremail,
+                    reciveremail,
+                    postid,
+                    message
                 }
             );
         } catch (error) {
@@ -95,7 +117,43 @@ export class Service {
           throw error; // Handle or rethrow the error as needed
         }
     }
+    async getInboxData(email) {
+        try {
+          // Make a request to fetch the document by email
+          const response = await this.databases.listDocuments(
+            conf.subletshebaDatabaseId,
+            conf.subletshebaInboxCollectionId,
+            [
+                Query.equal('useremail', email),
+                Query.equal('reciveremail', email)
+            ]
 
+          );
+          // Handle the response
+          console.log('Fetched Document:', response);
+          
+         return response.documents; // Return the first matching document
+        } catch (error) {
+          console.error('Error fetching document:', error);
+          throw error; // Handle or rethrow the error as needed
+        }
+    }
+    async getAllPosts() {
+        try {
+          // Make a request to fetch the document by email
+          const response = await this.databases.listDocuments(
+            conf.subletshebaDatabaseId,
+            conf.subletshebaCollectionId
+          );
+          // Handle the response
+          console.log('Fetched Document:', response);
+          
+         return response.documents; // Return the first matching document
+        } catch (error) {
+          console.error('Error fetching document:', error);
+          throw error; // Handle or rethrow the error as needed
+        }
+    }
 
     async createPost({ title, details }) {
         try {
@@ -127,8 +185,9 @@ export class Service {
         }
     }
 
-    async deletePost({ documentid }) {
+    async deletePost(documentid) {
         try {
+            console.log(documentid);
             await this.databases.deleteDocument(
                 conf.subletshebaDatabaseId,
                 conf.subletshebaCollectionId,

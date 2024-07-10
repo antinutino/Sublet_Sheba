@@ -21,6 +21,7 @@ import Userdetail from './components/register/Userdeatil.jsx'
 import Newsfeed from './components/newsfeed/Newsfeed.jsx'
 import Post from './components/post/Post.jsx'
 import Userposts from './components/showposts/Userposts.jsx'
+import Inbox from './components/inbox/Inbox.jsx'
 
 const fetchPosts = () => {
   return fetch('https://jsonplaceholder.typicode.com/posts')
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
         {
           path:'/userpost',
           element:<Userposts></Userposts>
+        },
+        {
+          path:'/inbox',
+          element:<Inbox></Inbox>
         }
 
       ],

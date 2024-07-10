@@ -83,12 +83,14 @@ export default function Profile() {
         <div className="border-t border-gray-200 mt-4 pt-4">
           <Userposts></Userposts>
         </div>
-        <button
+        <div className="flex justify-end mt-4">
+          <button
             onClick={handleLogout}
-            className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 self-end"
+            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
           >
             Logout
           </button>
+        </div>
       </div>
       {/* Footer */}
       <footer className="mt-8 border-t border-gray-200 pt-6 text-center text-gray-500">

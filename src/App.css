@@ -2,3 +2,10 @@ body img{
     width: 100%;
     height: 100%;
 }
+
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just to avoid the scrollbar space */
+  }
+  
