@@ -107,7 +107,7 @@ function Allposts() {
             )}
             {showModal && (
                 <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-lg shadow-lg p-6 w-1/3">
+                    <div className="bg-white rounded-lg shadow-lg p-2 lg:p-6 w-full mx-2 lg:w-1/3">
                         <h2 className="text-xl font-bold mb-4">Response Sent</h2>
                         <p>Your response has been sent successfully.</p>
                         <button 

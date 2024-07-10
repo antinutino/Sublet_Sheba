@@ -138,6 +138,28 @@ export class Service {
           throw error; // Handle or rethrow the error as needed
         }
     }
+    async getSearchData(districtvalue,subdistrictvalue) {
+        try {
+            console.log(districtvalue);
+          // Make a request to fetch the document by email
+          const response = await this.databases.listDocuments(
+            conf.subletshebaDatabaseId,
+            conf.subletshebaCollectionId,
+            [
+                Query.equal('district', districtvalue),
+                Query.equal('subdistrict', subdistrictvalue)
+            ]
+          );
+          // Handle the response
+          console.log('Fetched Document:', response);
+          
+         return response.documents; // Return the first matching document
+        } catch (error) {
+          console.error('Error fetching document:', error);
+          throw error; // Handle or rethrow the error as needed
+        }
+    }
+
     async getAllPosts() {
         try {
           // Make a request to fetch the document by email

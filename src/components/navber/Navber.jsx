@@ -2,13 +2,14 @@ import { RiMenu2Line } from "react-icons/ri";
 import { IoMdSearch } from "react-icons/io";
 import { IoNotifications } from "react-icons/io5";
 import { useContext, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../provider/Authprovider";
 import { CgProfile } from "react-icons/cg";
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
   const {user,logout}=useContext(AuthContext);
+  const navigate=useNavigate();
   const handlelogout=()=>{
     logout()
     .then(()=>console.log("loged out"))
@@ -35,7 +36,7 @@ export default function Navbar() {
           <div className="block flex-col absolute top-10 left-0 p-2 bg-white rounded-md z-50">
             <Link to=''><button onClick={navbtnclick} className="mb-1 hover:bg-zinc-200 rounded-lg text-sm w-1/3 text-left px-2 py-1">Home</button></Link>
             <Link to='about'><button onClick={navbtnclick} className="mb-1 hover:bg-zinc-200 rounded-lg text-sm w-1/3 text-left px-2 py-1">About</button></Link>
-            <Link to='contact'><button onClick={navbtnclick} className="hover:bg-zinc-200 rounded-lg text-sm w-1/3 text-left px-1 py-1">Contact</button></Link>
+            <Link to={user?'/news':'/login'}><button onClick={navbtnclick} className="hover:bg-zinc-200 rounded-lg text-sm w-1/3 text-left px-1 py-1">News</button></Link>
           </div>
         )}
       </div>
@@ -44,7 +45,7 @@ export default function Navbar() {
       </div>
       <div className="flex items-center">
         <div className="ml-2">
-          <Link to='search'>
+          <Link to={user?'/search':'/login'}>
             <button>
               <IoMdSearch className="text-4xl hover:bg-slate-300 p-1 rounded-xl" />
             </button>

@@ -43,7 +43,7 @@ function Post() {
     try {
       await service.setpost(formData);
       console.log('post saved successfully!');
-      navigate('/');
+      navigate('/news');
 
       // Clear the form after submission
       setFormData({

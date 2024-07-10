@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/Authprovider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Service } from "../../appwrite/data_config"; // Import your Service class from services/service.js
 import { FiEdit, FiInbox } from 'react-icons/fi'; // Import edit and inbox icons
 import Userposts from '../showposts/Userposts'
@@ -59,6 +59,7 @@ export default function Profile() {
           </div>
           {/* Edit and Inbox Buttons */}
           <div className="mt-4 flex space-x-4">
+            <Link to='/post'>
             <button
               onClick={() => { /* Handle edit functionality */ }}
               className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
@@ -66,6 +67,8 @@ export default function Profile() {
               <FiEdit className="h-5 w-5" />
               <span className="ml-2">Post</span>
             </button>
+            </Link>
+            <Link to='/inbox'>
             <button
               onClick={() => { /* Handle inbox functionality */ }}
               className="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
@@ -73,6 +76,7 @@ export default function Profile() {
               <FiInbox className="h-5 w-5" />
               <span className="ml-2">Inbox</span>
             </button>
+            </Link>
           </div>
         </div>
       ) : (

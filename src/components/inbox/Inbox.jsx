@@ -76,16 +76,16 @@ function Inbox() {
     }
 
     return (
-        <div className="p-2 lg:p-4">
-            <h2 className="text-xl font-bold mb-4">Inbox</h2>
+        <div className="p-2 lg:p-4 w-full md:mr-4 border-cyan-500 ">
+            <h2 className="text-xl ml-6 font-bold mb-4">Inbox</h2>
             {messages.length === 0 ? (
-                <div className="text-center py-8">message is not avaliable</div>
+                <div className="text-center py-8">message may not be avaliable</div>
             ) : (
-                <ul className="divide-y w-full divide-gray-200">
+                <ul className="divide-y w-full lg:ml-4 divide-gray-200">
                     {messages.map((message) => (
                         <li 
                             key={message.$id} 
-                            className="py-4 cursor-pointer hover:bg-gray-100" 
+                            className="py-2 px-2 rounded-md cursor-pointer hover:bg-gray-100" 
                             onClick={() => handleSetExpandedMessage(message)}
                         >
                             {expandedMessageId !== message.$id ? (
@@ -113,7 +113,7 @@ function Inbox() {
                                     <div className="flex justify-end space-x-4 mt-2">
                                         <button 
                                             onClick={() => handleReplyButtonClick(message)} 
-                                            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                                            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 mr-2 md:mr-6 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                                         >
                                             Reply
                                         </button>

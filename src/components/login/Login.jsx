@@ -32,7 +32,7 @@ function Login() {
 
     login(email,password)
     .then(result=>{
-      navigate('/');
+      navigate('/news');
     })
     .catch(error=>{
       console.log(error);

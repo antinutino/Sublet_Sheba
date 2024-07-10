@@ -34,7 +34,7 @@ function Userdetail() {
     try {
       await service.setUserDetail(formData);
       console.log('User details saved successfully!');
-      navigate('/');
+      navigate('/news');
       // Reset form after submission
       setFormData({
         name:'',

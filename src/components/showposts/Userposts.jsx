@@ -58,7 +58,7 @@ function Userposts() {
         <div className="w-full px-0 md:px-8 lg:px-16">
             {isDeleted && <div className="text-center py-4 text-green-500">Post has been deleted successfully.</div>}
             {posts.length === 0 ? (
-                <div className="text-center py-8">Loading...</div>
+                <div className="text-center py-8">posts may not be avaliable</div>
             ) : (
                 <div className="grid gap-6">
                     {posts.map((post) => (

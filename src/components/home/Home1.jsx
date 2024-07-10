@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import Bodysection1 from '../body/Bodysection1';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/Authprovider";
 
 export default function Home1() {
   const [start, setstart] = useState(false);
+  const {user}=useContext(AuthContext);
+  const navigate=useNavigate();
+
+  if(user)
+  {
+    navigate('/news');
+  }
 
   return (
     <>
@@ -27,7 +35,7 @@ export default function Home1() {
                 </ul>
               </div>
               <Link to='/about'><button className="btn btn-outline p-1 mt-2 mb-8 text-white border-white">View Details</button></Link>
-              <Link to='/news'><button className="btn btn-primary px-6 py-2 text-xl">Get Started</button></Link>
+              <Link to={user?'/news':'/login'}><button className="btn btn-primary px-6 py-2 text-xl">Get Started</button></Link>
             </div>
           </div>
         </div>
