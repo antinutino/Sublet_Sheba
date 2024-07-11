@@ -117,6 +117,26 @@ export class Service {
           throw error; // Handle or rethrow the error as needed
         }
     }
+     
+    async getSinglePost(documentid) {
+        console.log(documentid);
+        try {
+          // Make a request to fetch the document by email
+          const response = await this.databases.getDocument(
+            conf.subletshebaDatabaseId,
+            conf.subletshebaCollectionId,
+            documentid,
+          );
+          // Handle the response
+          console.log('Fetched Document:', response);
+          
+         return response; // Return the first matching document
+        } catch (error) {
+          console.error('Error fetching document:', error);
+          throw error; // Handle or rethrow the error as needed
+        }
+    }
+
     async getInboxData(email) {
         try {
           // Make a request to fetch the document by email
@@ -124,7 +144,6 @@ export class Service {
             conf.subletshebaDatabaseId,
             conf.subletshebaInboxCollectionId,
             [
-                Query.equal('useremail', email),
                 Query.equal('reciveremail', email)
             ]
 
