@@ -50,7 +50,7 @@ function Inbox() {
             username: user.name,
             useremail: user.email,
             reciveremail: message.useremail,
-            postid: message.$id,
+            postid: message.postid,
             message: '' // Initialize with empty message
         });
         setIsReplyDialogOpen(true);
